@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useEffect, useRef } from "react"
+import { useRef } from "react"
 import { OutputBlock } from "./output-block"
 import { TerminalInput } from "./terminal-input"
 
@@ -36,18 +36,19 @@ export function Terminal({
 }: TerminalProps) {
   const terminalRef = useRef<HTMLDivElement>(null)
 
-  useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight
-    }
-  }, [output])
+  // Removed auto-scroll since parent handles scroll-to-top
+  // useEffect(() => {
+  //   if (terminalRef.current) {
+  //     terminalRef.current.scrollTop = terminalRef.current.scrollHeight
+  //   }
+  // }, [output])
 
   return (
-    <div className="flex flex-col h-screen bg-background text-foreground font-mono">
+    <div className="flex flex-col bg-background text-foreground font-mono">
       {/* Terminal Content */}
       <div
         ref={terminalRef}
-        className="flex-1 overflow-y-auto px-6 md:px-8 lg:px-10 py-6 pb-20 md:pb-4"
+        className="px-6 md:px-8 lg:px-10 py-6 pb-20 md:pb-4"
         style={{ maxWidth: "70ch", margin: "0 auto", width: "100%" }}
       >
         <div className="space-y-6">

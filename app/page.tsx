@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useEffect } from "react"
+import { useState, useEffect, useRef } from "react"
 import { Terminal } from "@/components/terminal"
 import { CommandPalette } from "@/components/command-palette"
 import { MobileInputBar } from "@/components/mobile-input-bar"
@@ -9,15 +9,26 @@ import { useTerminal } from "@/hooks/use-terminal"
 import { useTheme } from "@/hooks/use-theme"
 
 export default function HomePage() {
-  const [showBoot, setShowBoot] = useState(true)
+  const [bootCompleted, setBootCompleted] = useState(false)
   const [showCommandPalette, setShowCommandPalette] = useState(false)
+  const containerRef = useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
 
   const { output, input, setInput, executeCommand, history, historyIndex, setHistoryIndex, suggestions, clearOutput } =
     useTerminal()
 
   const handleBootComplete = () => {
-    setShowBoot(false)
+    setBootCompleted(true)
+  }
+
+  const handleExecuteCommand = (command: string) => {
+    executeCommand(command)
+    // Scroll to top after a brief delay to allow content to render
+    setTimeout(() => {
+      if (containerRef.current) {
+        containerRef.current.scrollTo({ top: 0, behavior: "smooth" })
+      }
+    }, 100)
   }
 
   useEffect(() => {
@@ -32,35 +43,37 @@ export default function HomePage() {
     return () => document.removeEventListener("keydown", handleKeyDown)
   }, [])
 
-  if (showBoot) {
-    return <BootScreen onComplete={handleBootComplete} />
-  }
-
   return (
-    <div className="min-h-screen bg-background text-foreground font-mono">
-      <Terminal
-        output={output}
-        input={input}
-        setInput={setInput}
-        executeCommand={executeCommand}
-        history={history}
-        historyIndex={historyIndex}
-        setHistoryIndex={setHistoryIndex}
-        suggestions={suggestions}
-        clearOutput={clearOutput}
-      />
+    <div ref={containerRef} className="min-h-screen bg-background text-foreground font-mono overflow-y-auto">
+      <div className={bootCompleted ? "opacity-75" : "opacity-100"}>
+        <BootScreen onComplete={handleBootComplete} />
+      </div>
+
+      {bootCompleted && (
+        <Terminal
+          output={output}
+          input={input}
+          setInput={setInput}
+          executeCommand={handleExecuteCommand}
+          history={history}
+          historyIndex={historyIndex}
+          setHistoryIndex={setHistoryIndex}
+          suggestions={suggestions}
+          clearOutput={clearOutput}
+        />
+      )}
 
       <MobileInputBar
         input={input}
         setInput={setInput}
-        executeCommand={executeCommand}
+        executeCommand={handleExecuteCommand}
         onOpenPalette={() => setShowCommandPalette(true)}
       />
 
       <CommandPalette
         isOpen={showCommandPalette}
         onClose={() => setShowCommandPalette(false)}
-        onExecuteCommand={executeCommand}
+        onExecuteCommand={handleExecuteCommand}
       />
     </div>
   )
