@@ -69,9 +69,11 @@ const basicCommands: Command[] = [
               <h4 className="text-foreground font-medium mb-2 flex items-center">
                 <span className="text-terracotta mr-2">●</span>
                 Basic Commands
-                <span className="text-xs bg-terracotta/20 text-terracotta px-2 py-1 rounded ml-2">
-                  {progress}/3 used
-                </span>
+                {progress < 3 && (
+                  <span className="text-xs bg-terracotta/20 text-terracotta px-2 py-1 rounded ml-2">
+                    {progress}/3 used
+                  </span>
+                )}
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm pl-6">
                 <div>
@@ -98,9 +100,11 @@ const basicCommands: Command[] = [
                 <h4 className="text-foreground font-medium mb-2 flex items-center">
                   <span className="text-olive mr-2">◆</span>
                   Advanced Commands
-                  <span className="text-xs bg-olive/20 text-olive px-2 py-1 rounded ml-2">
-                    Unlocked! {discoveryState?.advancedCommandsUsed || 0} used
-                  </span>
+                  {!showingHints && (
+                    <span className="text-xs bg-olive/20 text-olive px-2 py-1 rounded ml-2">
+                      {discoveryState?.advancedCommandsUsed || 0}/3 used
+                    </span>
+                  )}
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm pl-6">
                   <div>
@@ -305,7 +309,6 @@ const basicCommands: Command[] = [
                       <span className="text-foreground font-medium">{project.title}</span>
                       <span className="text-muted-foreground mx-2">•</span>
                       <span className="text-muted-foreground">{project.year}</span>
-                      <span className="text-muted-foreground mx-2">•</span>
                       <span
                         className={`text-xs px-2 py-1 rounded ${
                           project.status === "Active" ? "bg-accent/20 text-accent" : "bg-muted/20 text-muted-foreground"
@@ -455,7 +458,7 @@ const basicCommands: Command[] = [
               X/Twitter
             </a>
             ,{" "}
-            <a href="https://linkedin.com/in/dhruva" className="text-accent hover:underline">
+            <a href="https://in.linkedin.com/in/dhruva-chakravarthi" className="text-accent hover:underline">
               LinkedIn
             </a>
             ,{" "}

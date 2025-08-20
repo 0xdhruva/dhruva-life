@@ -1,7 +1,7 @@
 "use client"
 
 import type React from "react"
-import { useRef } from "react"
+import { useRef, useEffect } from "react"
 import { OutputBlock } from "./output-block"
 import { TerminalInput } from "./terminal-input"
 
@@ -38,11 +38,11 @@ export function Terminal({
 }: TerminalProps) {
   const terminalRef = useRef<HTMLDivElement>(null)
 
-  // useEffect(() => {
-  //   if (terminalRef.current) {
-  //     terminalRef.current.scrollTop = terminalRef.current.scrollHeight
-  //   }
-  // }, [output])
+  useEffect(() => {
+    if (terminalRef.current) {
+      terminalRef.current.scrollTop = terminalRef.current.scrollHeight
+    }
+  }, [output])
 
   return (
     <>
