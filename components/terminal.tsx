@@ -36,7 +36,6 @@ export function Terminal({
 }: TerminalProps) {
   const terminalRef = useRef<HTMLDivElement>(null)
 
-  // Removed auto-scroll since parent handles scroll-to-top
   // useEffect(() => {
   //   if (terminalRef.current) {
   //     terminalRef.current.scrollTop = terminalRef.current.scrollHeight
@@ -44,7 +43,7 @@ export function Terminal({
   // }, [output])
 
   return (
-    <div className="flex flex-col bg-background text-foreground font-mono">
+    <div className="flex flex-col text-foreground font-mono">
       {/* Terminal Content */}
       <div
         ref={terminalRef}
@@ -61,7 +60,7 @@ export function Terminal({
       </div>
 
       {/* Desktop Input */}
-      <div className="hidden md:block border-t border-muted-foreground/20 bg-background">
+      <div className="hidden md:block border-t border-muted-foreground/20">
         <div style={{ maxWidth: "70ch", margin: "0 auto", width: "100%" }}>
           <TerminalInput
             input={input}
