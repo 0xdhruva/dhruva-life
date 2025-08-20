@@ -96,12 +96,12 @@ export function TerminalInput({
   }
 
   return (
-    <div className="relative p-6 space-baseline-2">
-      <div className="flex items-center space-x-3 min-h-[48px]">
-        <span className="text-terracotta text-lg">❯</span>
+    <div className="relative">
+      <div className="flex items-center gap-2 py-2">
+        <span className="text-foreground font-mono">❯</span>
         <div className="flex-1 relative">
           {ghostText && (
-            <div className="absolute inset-0 pointer-events-none text-sage/40 whitespace-pre">
+            <div className="absolute inset-0 pointer-events-none text-muted-foreground/40 font-mono whitespace-pre">
               <span className="invisible">{input}</span>
               {ghostText}
             </div>
@@ -114,8 +114,8 @@ export function TerminalInput({
             onKeyDown={handleKeyDown}
             onFocus={() => setShowSuggestions(input.length > 0 && suggestions.length > 0)}
             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-            className="w-full bg-transparent border-none outline-none text-bone placeholder-sage/50 focus:ring-2 focus:ring-teal-stone focus:ring-offset-0 rounded-sm content-width"
-            placeholder="Type a command..."
+            className="w-full bg-transparent border-none outline-none text-foreground font-mono placeholder-muted-foreground focus:outline-none"
+            placeholder=""
             autoComplete="off"
             autoCorrect="off"
             autoCapitalize="off"
@@ -123,15 +123,16 @@ export function TerminalInput({
             inputMode="text"
           />
         </div>
+        <div className="w-3 h-5 bg-foreground animate-pulse" />
       </div>
 
       {showSuggestions && suggestions.length > 0 && (
-        <div className="absolute bottom-full left-6 right-6 mb-2 bg-peat/95 backdrop-blur-sm border border-sage/30 rounded-md p-3 space-y-2 shadow-lg">
-          <div className="text-xs text-sage/70 mb-2">Suggestions (Tab to accept)</div>
-          {suggestions.slice(0, 5).map((suggestion, index) => (
+        <div className="absolute top-full left-0 right-0 mt-1 bg-background border-l-2 border-muted pl-4 py-2">
+          <div className="text-sm text-muted-foreground font-mono mb-1">Tab to complete:</div>
+          {suggestions.slice(0, 3).map((suggestion) => (
             <div
               key={suggestion}
-              className="text-sm text-sage hover:text-bone cursor-pointer p-2 rounded hover:bg-sage/20 transition-colors"
+              className="text-sm text-muted-foreground font-mono hover:text-foreground cursor-pointer py-1"
               onClick={() => {
                 setInput(suggestion)
                 setShowSuggestions(false)
