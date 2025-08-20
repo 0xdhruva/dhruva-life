@@ -469,9 +469,6 @@ const basicCommands: Command[] = [
               Book a time
             </a>
           </p>
-          <p>
-            <span className="text-muted-foreground">Open ports:</span> 25 (SMTP), 443 (TLS), 8000 (dev)
-          </p>
         </div>
       ),
     }),
