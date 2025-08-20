@@ -45,32 +45,32 @@ export function Terminal({
   return (
     <div className="flex flex-col text-foreground font-mono">
       {/* Terminal Content */}
-      <div
-        ref={terminalRef}
-        className="px-6 md:px-8 lg:px-10 py-6 pb-20 md:pb-4"
-        style={{ maxWidth: "70ch", margin: "0 auto", width: "100%" }}
-      >
-        <div className="space-y-6">
-          {output.map((block, index) => (
-            <div key={block.id}>
-              <OutputBlock {...block} />
-            </div>
-          ))}
+      <div ref={terminalRef} className="flex items-center justify-center py-6 pb-20 md:pb-4">
+        <div className="text-left max-w-[70ch] px-6 w-full">
+          <div className="space-y-6">
+            {output.map((block, index) => (
+              <div key={block.id}>
+                <OutputBlock {...block} />
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Desktop Input */}
-      <div className="hidden md:block border-t border-muted-foreground/20">
-        <div style={{ maxWidth: "70ch", margin: "0 auto", width: "100%" }}>
-          <TerminalInput
-            input={input}
-            setInput={setInput}
-            executeCommand={executeCommand}
-            history={history}
-            historyIndex={historyIndex}
-            setHistoryIndex={setHistoryIndex}
-            suggestions={suggestions}
-          />
+      <div className="hidden md:block">
+        <div className="flex items-center justify-center">
+          <div className="max-w-[70ch] px-6 w-full">
+            <TerminalInput
+              input={input}
+              setInput={setInput}
+              executeCommand={executeCommand}
+              history={history}
+              historyIndex={historyIndex}
+              setHistoryIndex={setHistoryIndex}
+              suggestions={suggestions}
+            />
+          </div>
         </div>
       </div>
     </div>

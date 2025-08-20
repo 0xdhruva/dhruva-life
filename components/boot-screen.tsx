@@ -51,46 +51,50 @@ export function BootScreen({ onComplete, hasExecutedCommand }: BootScreenProps) 
 
   if (skipped && hasExecutedCommand) {
     return (
-      <div className="text-left space-y-1 mb-4 opacity-75 transition-opacity duration-300">
-        {bootSequence.map((line, index) => (
-          <div
-            key={index}
-            className={`text-base leading-7 ${
-              index === 3
-                ? "text-accent font-medium"
-                : index === 4
-                  ? "text-muted text-sm"
-                  : index === 5
+      <div className="flex items-center justify-center font-mono mb-8">
+        <div className="text-left space-y-1 max-w-[70ch] px-6 opacity-75 transition-opacity duration-300">
+          {bootSequence.map((line, index) => (
+            <div
+              key={index}
+              className={`text-base leading-7 ${
+                index === 3
+                  ? "text-accent font-medium"
+                  : index === 4
                     ? "text-muted text-sm"
-                    : ""
-            }`}
-          >
-            {line}
-          </div>
-        ))}
+                    : index === 5
+                      ? "text-muted text-sm"
+                      : ""
+              }`}
+            >
+              {line}
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
 
   if (skipped) {
     return (
-      <div className="text-left space-y-1 mb-4 opacity-75 transition-opacity duration-300">
-        {bootSequence.map((line, index) => (
-          <div
-            key={index}
-            className={`text-base leading-7 ${
-              index === 3
-                ? "text-accent font-medium"
-                : index === 4
-                  ? "text-muted text-sm"
-                  : index === 5
+      <div className="flex items-center justify-center font-mono mb-8">
+        <div className="text-left space-y-1 max-w-[70ch] px-6 opacity-75 transition-opacity duration-300">
+          {bootSequence.map((line, index) => (
+            <div
+              key={index}
+              className={`text-base leading-7 ${
+                index === 3
+                  ? "text-accent font-medium"
+                  : index === 4
                     ? "text-muted text-sm"
-                    : ""
-            }`}
-          >
-            {line}
-          </div>
-        ))}
+                    : index === 5
+                      ? "text-muted text-sm"
+                      : ""
+              }`}
+            >
+              {line}
+            </div>
+          ))}
+        </div>
       </div>
     )
   }
