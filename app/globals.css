@@ -1,75 +1,304 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+@import "tw-animate-css";
 
-@layer base {
-  :root {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+@custom-variant dark (&:is(.dark *));
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+:root {
+  /* Updated to exact terminal color palette with CSS custom properties */
+  --bg: #1b1f1a;
+  --fg: #ede6da;
+  --accent: #c7684a;
+  --muted: #7a8f80;
+  --success: #6e7f4f;
+  --warn: #c2a05d;
+  --focus: #3e6d6c;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+  /* Earthy color palette - exact hex values */
+  --peat: #1b1f1a;
+  --bone: #ede6da;
+  --terracotta: #c7684a;
+  --sage: #7a8f80;
+  --olive: #6e7f4f;
+  --ochre: #c2a05d;
+  --teal-stone: #3e6d6c;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+  /* Light theme */
+  --background: var(--bone);
+  --foreground: var(--peat);
+  --card: var(--bone);
+  --card-foreground: var(--peat);
+  --popover: var(--bone);
+  --popover-foreground: var(--peat);
+  --primary: var(--terracotta);
+  --primary-foreground: var(--bone);
+  --secondary: var(--sage);
+  --secondary-foreground: var(--bone);
+  --muted: var(--sage);
+  --muted-foreground: var(--peat);
+  --accent: var(--teal-stone);
+  --accent-foreground: var(--bone);
+  --destructive: #dc2626;
+  --destructive-foreground: var(--bone);
+  --border: var(--sage);
+  --input: var(--sage);
+  --ring: var(--teal-stone);
+  --radius: 0.5rem;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #007bff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffcc00;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #cccccc;
+  --sidebar-ring: #ffcc00;
+}
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+.dark {
+  /* Dark theme using terminal color palette */
+  --background: var(--bg);
+  --foreground: var(--fg);
+  --card: var(--bg);
+  --card-foreground: var(--fg);
+  --popover: var(--bg);
+  --popover-foreground: var(--fg);
+  --primary: var(--accent);
+  --primary-foreground: var(--fg);
+  --secondary: var(--muted);
+  --secondary-foreground: var(--fg);
+  --muted: var(--muted);
+  --muted-foreground: var(--fg);
+  --accent: var(--accent);
+  --accent-foreground: var(--fg);
+  --destructive: #ef4444;
+  --destructive-foreground: var(--fg);
+  --border: var(--muted);
+  --input: var(--muted);
+  --ring: var(--focus);
+  --sidebar: #333333;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ffcc00;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffcc00;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #666666;
+  --sidebar-ring: #ffcc00;
+}
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-
-    --radius: 0.5rem;
-  }
+@theme inline {
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
 }
 
 @layer base {
   * {
-    @apply border-border;
+    @apply border-border outline-ring/50;
   }
+
   body {
     @apply bg-background text-foreground;
+    /* Typography improvements - 18px base desktop, 16px mobile, tighter letter spacing */
+    font-size: 18px;
+    letter-spacing: -0.01em;
+    line-height: 1.56; /* 28px line height for 18px text */
+    font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
+  }
+
+  /* Mobile typography - 16px base with 26px line height */
+  @media (max-width: 768px) {
+    body {
+      font-size: 16px;
+      line-height: 1.625; /* 26px line height for 16px text */
+    }
+  }
+
+  /* Typography scale following specifications */
+  h1,
+  h2,
+  h3 {
+    font-size: 22px;
+    font-weight: 600;
+    line-height: 1.45; /* 32px line height */
+    letter-spacing: -0.02em;
+  }
+
+  @media (max-width: 768px) {
+    h1,
+    h2,
+    h3 {
+      font-size: 20px;
+      line-height: 1.5; /* 30px line height */
+    }
+  }
+
+  /* Meta text styling - 14px timestamps at 85% opacity */
+  .text-meta {
+    font-size: 14px;
+    line-height: 1.43; /* 20px line height */
+    opacity: 0.85;
+  }
+
+  /* Enhanced focus ring with exact Teal Stone color */
+  .focus-ring:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  /* Thick, steady cursor with 600ms blink */
+  .terminal-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1.2em;
+    background-color: var(--accent);
+    animation: blink 1.2s infinite;
+    border-radius: 1px;
+  }
+
+  @keyframes blink {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    51%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Reduced motion support - disable animations */
+  @media (prefers-reduced-motion: reduce) {
+    .terminal-cursor {
+      animation: none;
+      opacity: 1;
+    }
+
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+
+  /* 8px baseline grid spacing utilities */
+  .space-baseline {
+    margin: 8px 0;
+  }
+
+  .space-baseline-2 {
+    margin: 16px 0;
+  }
+
+  .space-baseline-3 {
+    margin: 24px 0;
+  }
+
+  /* Micro-interactions - hover states with lightness adjustment */
+  .hover-lift:hover {
+    filter: brightness(1.1);
+    transition: filter 0.2s ease;
+  }
+
+  .hover-darken:hover {
+    filter: brightness(0.9);
+    transition: filter 0.2s ease;
+  }
+
+  /* Pressed scale effect for 80ms */
+  .press-scale:active {
+    transform: scale(0.98);
+    transition: transform 80ms ease;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button,
+  a,
+  input {
+    transition: all 0.2s ease;
+  }
+
+  /* Line length constraint ~70 characters */
+  .content-width {
+    max-width: 70ch;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-6 {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-12 {
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Custom scrollbar with earthy colors */
+  .terminal-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .terminal-scroll::-webkit-scrollbar-track {
+    background: rgba(122, 143, 128, 0.1);
+  }
+
+  .terminal-scroll::-webkit-scrollbar-thumb {
+    background: var(--muted);
+    border-radius: 4px;
+  }
+
+  .terminal-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--focus);
+  }
+
+  /* Safe area for mobile */
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+/* Subtle grain texture with earthy colors */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0.03;
+  z-index: -1;
+  background-image: radial-gradient(circle at 25% 25%, var(--muted) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, var(--accent) 1px, transparent 1px);
+  background-size: 8px 8px;
+  pointer-events: none;
 }
-
-/* Responsive text sizes */
-.text-responsive {
-  @apply text-sm sm:text-base md:text-lg;
-}
-
-.heading-responsive {
-  @apply text-2xl sm:text-3xl md:text-4xl font-bold;
-}
-
-.subheading-responsive {
-  @apply text-xl sm:text-2xl md:text-3xl font-semibold;
-}
-
-/* Responsive spacing */
-.section-padding {
-  @apply py-8 sm:py-12 md:py-16;
-}
-
-.content-padding {
-  @apply px-4 sm:px-6 md:px-8 lg:px-12;
-}
-

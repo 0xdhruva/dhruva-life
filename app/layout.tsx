@@ -1,36 +1,36 @@
-import './globals.css'
-import { Inter } from 'next/font/google'
-import Header from './components/Header'
-import Footer from './components/Footer'
-import { ScrollToTop } from './components/ScrollToTop'
-import { SmoothScroll } from './components/SmoothScroll'
+import type React from "react"
+import type { Metadata } from "next"
+import { JetBrains_Mono } from "next/font/google"
+import "./globals.css"
 
-const inter = Inter({ subsets: ['latin'] })
+const jetbrainsMono = JetBrains_Mono({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-jetbrains-mono",
+})
 
-export const metadata = {
-  title: 'dhruva.life',
-  description: 'Personal website of Dhruva Chakravarthi - Building technology with empathy, practicing Jiu-Jitsu, and supporting indie artists.',
+export const metadata: Metadata = {
+  title: "dhruva.life — terminal",
+  description: "Creative Technologist & Product Builder. I build product for people I care about.",
+  generator: "v0.app",
 }
 
 export default function RootLayout({
   children,
-}: {
+}: Readonly<{
   children: React.ReactNode
-}) {
+}>) {
   return (
-    <html lang="en" className="dark">
-      <body className={`${inter.className} min-h-screen bg-background text-foreground`}>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-1 content-padding max-w-7xl mx-auto w-full">
-            {children}
-          </main>
-          <Footer />
-          <ScrollToTop />
-          <SmoothScroll />
-        </div>
-      </body>
+    <html lang="en" className={jetbrainsMono.variable}>
+      <head>
+        <style>{`
+html {
+  font-family: ${jetbrainsMono.style.fontFamily};
+  --font-mono: ${jetbrainsMono.style.fontFamily};
+}
+        `}</style>
+      </head>
+      <body className="font-mono antialiased">{children}</body>
     </html>
   )
 }
-
