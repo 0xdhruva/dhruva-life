@@ -4,7 +4,7 @@ import type React from "react"
 import { projects } from "@/content/projects"
 import { logs } from "@/content/logs"
 import { writingPosts } from "@/content/writing"
-import { EasterEggs } from "./easter-eggs"
+import { AnimatedASCII, PulseBanner, MatrixRain, CompileAnimation, DeployAnimation, ReplayButton } from "./animations"
 
 export interface CommandResult {
   content: React.ReactNode
@@ -776,8 +776,246 @@ ${post.content}`}
   },
 ]
 
+// Easter Eggs with frame-based animations
+const asciiEasterEggs: Command[] = [
+  {
+    name: "turntable",
+    description: "Spinning record animation",
+    category: "Easter Eggs",
+    execute: () => {
+      const frames = [
+        "    ╭─────────╮\n    │  ●───○  │\n    │    ●    │\n    │  ○───●  │\n    ╰─────────╯",
+        "    ╭─────────╮\n    │  ○───●  │\n    │    ○    │\n    │  ●───○  │\n    ╰─────────╯",
+        "    ╭─────────╮\n    │  ●───○  │\n    │    ●    │\n    │  ○───●  │\n    ╰─────────╯",
+        "    ╭─────────╮\n    │  ○───●  │\n    │    ○    │\n    │  ●───○  │\n    ╰─────────╯",
+      ]
+
+      return {
+        content: (
+          <div className="space-y-4">
+            <div className="font-mono text-center">
+              <AnimatedASCII frames={frames} duration={2000} />
+            </div>
+            <p className="text-center text-sage">🎵 Now spinning... 🎵</p>
+            <ReplayButton command="turntable" />
+          </div>
+        ),
+      }
+    },
+  },
+  {
+    name: "slapbump",
+    description: "Jiu-jitsu greeting animation",
+    category: "Easter Eggs",
+    execute: () => {
+      const frames = ["  o/     \\o  ", "  o|     |o  ", "  o\\     /o  ", "  o/\\   /\\o  ", "  o/\\o o/\\o  "]
+
+      const tips = [
+        "Keep your grips tight and your base strong.",
+        "Flow like water, strike like lightning.",
+        "The mat doesn't lie - train hard, stay humble.",
+        "Every tap is a lesson, every roll is growth.",
+        "Respect the tap, reset, and go again.",
+      ]
+
+      const randomTip = tips[Math.floor(Math.random() * tips.length)]
+
+      return {
+        content: (
+          <div className="space-y-4">
+            <div className="font-mono text-center">
+              <AnimatedASCII frames={frames} duration={2500} />
+            </div>
+            <p className="text-center text-terracotta font-medium">🥋 Slap and bump! 🥋</p>
+            <p className="text-center text-sage italic">"{randomTip}"</p>
+            <ReplayButton command="slapbump" />
+          </div>
+        ),
+      }
+    },
+  },
+  {
+    name: "rangoli",
+    description: "Fractal rangoli bloom animation",
+    category: "Easter Eggs",
+    execute: () => {
+      const frames = ["    ·    ", "   ·•·   ", "  ·•○•·  ", " ·•○●○•· ", "·•○●◆●○•·", "•○●◆◇◆●○•"]
+
+      return {
+        content: (
+          <div className="space-y-4">
+            <div className="font-mono text-center">
+              <AnimatedASCII frames={frames} duration={3000} />
+            </div>
+            <p className="text-center text-ochre">✨ Rangoli blooms with intention ✨</p>
+            <ReplayButton command="rangoli" />
+          </div>
+        ),
+      }
+    },
+  },
+  {
+    name: "linkinpark",
+    description: "Figlet banner pulse animation",
+    category: "Easter Eggs",
+    execute: () => {
+      const banner = `
+██╗     ██╗███╗   ██╗██╗  ██╗██╗███╗   ██╗    ██████╗  █████╗ ██████╗ ██╗  ██╗
+██║     ██║████╗  ██║██║ ██╔╝██║████╗  ██║    ██╔══██╗██╔══██╗██╔══██╗██║ ██╔╝
+██║     ██║██╔██╗ ██║█████╔╝ ██║██╔██╗ ██║    ██████╔╝███████║██████╔╝█████╔╝ 
+██║     ██║██║╚██╗██║██╔═██╗ ██║██║╚██╗██║    ██╔═══╝ ██╔══██║██╔══██╗██╔═██╗ 
+███████╗██║██║ ╚████║██║  ██╗██║██║ ╚████║    ██║     ██║  ██║██║  ██║██║  ██╗
+╚══════╝╚═╝╚═╝  ╚═══╝╚═╝  ╚═╝╚═╝╚═╝  ╚═══╝    ╚═╝     ╚═╝  ╚═╝╚═╝  ╚═╝╚═╝  ╚═╝
+      `
+
+      return {
+        content: (
+          <div className="space-y-4">
+            <div className="font-mono text-xs">
+              <PulseBanner text={banner} />
+            </div>
+            <p className="text-center text-sage">🎤 In the end, it doesn't even matter... 🎤</p>
+            <ReplayButton command="linkinpark" />
+          </div>
+        ),
+      }
+    },
+  },
+  {
+    name: "matrix",
+    description: "Digital rain animation",
+    category: "Easter Eggs",
+    execute: () => {
+      return {
+        content: (
+          <div className="space-y-4">
+            <div className="font-mono text-sm">
+              <MatrixRain />
+            </div>
+            <p className="text-center text-olive">There is no spoon... 🥄</p>
+            <ReplayButton command="matrix" />
+          </div>
+        ),
+      }
+    },
+  },
+  {
+    name: "compile",
+    description: "ASCII progress bar with logs",
+    category: "Easter Eggs",
+    execute: () => {
+      return {
+        content: (
+          <div className="space-y-2">
+            <CompileAnimation />
+            <ReplayButton command="compile" />
+          </div>
+        ),
+      }
+    },
+  },
+  {
+    name: "deploy",
+    description: "Deployment progress animation",
+    category: "Easter Eggs",
+    execute: () => {
+      return {
+        content: (
+          <div className="space-y-2">
+            <DeployAnimation />
+            <ReplayButton command="deploy" />
+          </div>
+        ),
+      }
+    },
+  },
+  {
+    name: "tapout",
+    description: "Triangle submission animation",
+    category: "Easter Eggs",
+    execute: () => {
+      const frames = ["    /\\    ", "   /  \\   ", "  /____\\  ", "  \\____/  ", "   \\  /   ", "    \\/    "]
+
+      return {
+        content: (
+          <div className="space-y-4">
+            <div className="font-mono text-center">
+              <AnimatedASCII frames={frames} duration={2000} />
+            </div>
+            <p className="text-center text-terracotta font-medium">Respect the tap. Reset. Go again.</p>
+            <ReplayButton command="tapout" />
+          </div>
+        ),
+      }
+    },
+  },
+  {
+    name: "oss",
+    description: "OSS figlet banner",
+    category: "Easter Eggs",
+    execute: () => {
+      const banner = `
+ ██████╗ ███████╗███████╗
+██╔═══██╗██╔════╝██╔════╝
+██║   ██║███████╗███████╗
+██║   ██║╚════██║╚════██║
+╚██████╔╝███████║███████║
+ ╚═════╝ ╚══════╝╚══════╝
+      `
+
+      return {
+        content: (
+          <div className="space-y-4">
+            <div className="font-mono text-sm text-center">
+              <pre className="text-olive">{banner}</pre>
+            </div>
+            <p className="text-center text-sage">🥋 Onegaishimasu! 🥋</p>
+            <ReplayButton command="oss" />
+          </div>
+        ),
+      }
+    },
+  },
+  {
+    name: "vinyl",
+    description: "Record crate animation",
+    category: "Easter Eggs",
+    execute: () => {
+      const crate = `
+╭─────────────────╮
+│ ████ ████ ████ │
+│ ████ ████ ████ │
+│ ████ ████ ████ │
+╰─────────────────╯
+      `
+
+      const albums = [
+        "Miles Davis - Kind of Blue",
+        "John Coltrane - A Love Supreme",
+        "Thelonious Monk - Brilliant Corners",
+        "Bill Evans - Waltz for Debby",
+        "Art Blakey - Moanin'",
+      ]
+
+      const randomAlbum = albums[Math.floor(Math.random() * albums.length)]
+
+      return {
+        content: (
+          <div className="space-y-4">
+            <div className="font-mono text-center">
+              <pre className="text-ochre">{crate}</pre>
+            </div>
+            <p className="text-center text-terracotta">🎵 Pulled from the crate: {randomAlbum} 🎵</p>
+            <ReplayButton command="vinyl" />
+          </div>
+        ),
+      }
+    },
+  },
+]
+
 // Combine all commands
-const allCommands = [...coreCommands, ...utilityCommands, ...EasterEggs]
+const allCommands = [...coreCommands, ...utilityCommands, ...asciiEasterEggs]
 
 // Command execution function
 export function setExecuteCommand(fn: (command: string) => void) {

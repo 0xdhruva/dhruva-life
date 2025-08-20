@@ -4,6 +4,15 @@
 @custom-variant dark (&:is(.dark *));
 
 :root {
+  /* Updated to exact terminal color palette with CSS custom properties */
+  --bg: #1b1f1a;
+  --fg: #ede6da;
+  --accent: #c7684a;
+  --muted: #7a8f80;
+  --success: #6e7f4f;
+  --warn: #c2a05d;
+  --focus: #3e6d6c;
+
   /* Earthy color palette - exact hex values */
   --peat: #1b1f1a;
   --bone: #ede6da;
@@ -34,72 +43,49 @@
   --input: var(--sage);
   --ring: var(--teal-stone);
   --radius: 0.5rem;
-  --sidebar: #ede6da;
-  --sidebar-foreground: #1b1f1a;
-  --sidebar-primary: #c7684a;
-  --sidebar-primary-foreground: #ede6da;
-  --sidebar-accent: #c2a05d;
-  --sidebar-accent-foreground: #ede6da;
-  --sidebar-border: #7a8f80;
-  --sidebar-ring: #3e6d6c;
-  --chart-1: #8b5cf6;
-  --chart-2: #f59e0b;
-  --chart-3: #10b981;
-  --chart-4: #f97316;
-  --chart-5: #3b82f6;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #000000;
+  --sidebar-primary: #007bff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffcc00;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #cccccc;
+  --sidebar-ring: #ffcc00;
 }
 
 .dark {
-  /* Dark theme - primary experience */
-  --background: var(--peat);
-  --foreground: var(--bone);
-  --card: var(--peat);
-  --card-foreground: var(--bone);
-  --popover: var(--peat);
-  --popover-foreground: var(--bone);
-  --primary: var(--terracotta);
-  --primary-foreground: var(--bone);
-  --secondary: var(--sage);
-  --secondary-foreground: var(--bone);
-  --muted: var(--sage);
-  --muted-foreground: var(--bone);
-  --accent: var(--teal-stone);
-  --accent-foreground: var(--bone);
+  /* Dark theme using terminal color palette */
+  --background: var(--bg);
+  --foreground: var(--fg);
+  --card: var(--bg);
+  --card-foreground: var(--fg);
+  --popover: var(--bg);
+  --popover-foreground: var(--fg);
+  --primary: var(--accent);
+  --primary-foreground: var(--fg);
+  --secondary: var(--muted);
+  --secondary-foreground: var(--fg);
+  --muted: var(--muted);
+  --muted-foreground: var(--fg);
+  --accent: var(--accent);
+  --accent-foreground: var(--fg);
   --destructive: #ef4444;
-  --destructive-foreground: var(--bone);
-  --border: var(--sage);
-  --input: var(--sage);
-  --ring: var(--teal-stone);
-  --radius: 0.5rem;
-  --sidebar: #1b1f1a;
-  --sidebar-foreground: #ede6da;
-  --sidebar-primary: #8b5cf6;
-  --sidebar-primary-foreground: #ede6da;
-  --sidebar-accent: #f59e0b;
-  --sidebar-accent-foreground: #ede6da;
-  --sidebar-border: #f97316;
-  --sidebar-ring: #3b82f6;
-  --chart-1: #8b5cf6;
-  --chart-2: #f59e0b;
-  --chart-3: #10b981;
-  --chart-4: #f97316;
-  --chart-5: #3b82f6;
+  --destructive-foreground: var(--fg);
+  --border: var(--muted);
+  --input: var(--muted);
+  --ring: var(--focus);
+  --sidebar: #333333;
+  --sidebar-foreground: #ffffff;
+  --sidebar-primary: #ffcc00;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffcc00;
+  --sidebar-accent-foreground: #ffffff;
+  --sidebar-border: #666666;
+  --sidebar-ring: #ffcc00;
 }
 
 @theme inline {
-  /* Updated font configuration for JetBrains Mono */
-  --font-mono: var(--font-jetbrains-mono);
-
-  /* Custom color classes */
-  --color-peat: var(--peat);
-  --color-bone: var(--bone);
-  --color-terracotta: var(--terracotta);
-  --color-sage: var(--sage);
-  --color-olive: var(--olive);
-  --color-ochre: var(--ochre);
-  --color-teal-stone: var(--teal-stone);
-
-  /* Standard design tokens */
+  /* optional: --font-sans, --font-serif, --font-mono if they are applied in the layout.tsx */
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -119,10 +105,6 @@
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
   --color-sidebar: var(--sidebar);
   --color-sidebar-foreground: var(--sidebar-foreground);
   --color-sidebar-primary: var(--sidebar-primary);
@@ -131,11 +113,6 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
-  --color-chart-1: var(--chart-1);
-  --color-chart-2: var(--chart-2);
-  --color-chart-3: var(--chart-3);
-  --color-chart-4: var(--chart-4);
-  --color-chart-5: var(--chart-5);
 }
 
 @layer base {
@@ -144,29 +121,30 @@
   }
 
   body {
-    @apply bg-background text-foreground;
-    /* Typography improvements - 18px base, tighter letter spacing */
+    @apply bg-bg text-fg;
+    /* Typography improvements - 18px base desktop, 16px mobile, tighter letter spacing */
     font-size: 18px;
     letter-spacing: -0.01em;
-    line-height: 1.5;
+    line-height: 1.56; /* 28px line height for 18px text */
     font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas,
       "Liberation Mono", "Courier New", monospace;
   }
 
-  /* Mobile typography - 16px base */
+  /* Mobile typography - 16px base with 26px line height */
   @media (max-width: 768px) {
     body {
       font-size: 16px;
+      line-height: 1.625; /* 26px line height for 16px text */
     }
   }
 
-  /* Typography scale following 8px baseline grid */
+  /* Typography scale following specifications */
   h1,
   h2,
   h3 {
     font-size: 22px;
     font-weight: 600;
-    line-height: 1.4;
+    line-height: 1.45; /* 32px line height */
     letter-spacing: -0.02em;
   }
 
@@ -175,47 +153,31 @@
     h2,
     h3 {
       font-size: 20px;
+      line-height: 1.5; /* 30px line height */
     }
   }
 
-  /* Meta text styling - 14px timestamps */
+  /* Meta text styling - 14px timestamps at 85% opacity */
   .text-meta {
     font-size: 14px;
-    line-height: 1.4;
+    line-height: 1.43; /* 20px line height */
+    opacity: 0.85;
   }
 
-  /* Custom scrollbar with earthy colors */
-  .terminal-scroll::-webkit-scrollbar {
-    width: 8px;
-  }
-
-  .terminal-scroll::-webkit-scrollbar-track {
-    background: rgba(122, 143, 128, 0.1);
-  }
-
-  .terminal-scroll::-webkit-scrollbar-thumb {
-    background: var(--sage);
-    border-radius: 4px;
-  }
-
-  .terminal-scroll::-webkit-scrollbar-thumb:hover {
-    background: var(--teal-stone);
-  }
-
-  /* Enhanced focus ring with Teal Stone color */
+  /* Enhanced focus ring with exact Teal Stone color */
   .focus-ring:focus-visible {
-    outline: 2px solid var(--teal-stone);
+    outline: 2px solid var(--focus);
     outline-offset: 2px;
     border-radius: 4px;
   }
 
-  /* Thick, steady cursor */
+  /* Thick, steady cursor with 600ms blink */
   .terminal-cursor {
     display: inline-block;
     width: 3px;
     height: 1.2em;
-    background-color: var(--terracotta);
-    animation: blink 1s infinite;
+    background-color: var(--accent);
+    animation: blink 1.2s infinite;
     border-radius: 1px;
   }
 
@@ -230,7 +192,7 @@
     }
   }
 
-  /* Reduced motion support */
+  /* Reduced motion support - disable animations */
   @media (prefers-reduced-motion: reduce) {
     .terminal-cursor {
       animation: none;
@@ -242,24 +204,6 @@
       animation-iteration-count: 1 !important;
       transition-duration: 0.01ms !important;
     }
-  }
-
-  /* Safe area for mobile */
-  .safe-area-pb {
-    padding-bottom: env(safe-area-inset-bottom);
-  }
-
-  /* Line length constraint ~70 characters */
-  .content-width {
-    max-width: 70ch;
-  }
-
-  /* Line clamp utility */
-  .line-clamp-6 {
-    display: -webkit-box;
-    -webkit-line-clamp: 6;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
   }
 
   /* 8px baseline grid spacing utilities */
@@ -275,10 +219,21 @@
     margin: 24px 0;
   }
 
-  /* Enhanced hover states for interactive elements */
+  /* Micro-interactions - hover states with lightness adjustment */
   .hover-lift:hover {
-    transform: translateY(-1px);
-    transition: transform 0.2s ease;
+    filter: brightness(1.1);
+    transition: filter 0.2s ease;
+  }
+
+  .hover-darken:hover {
+    filter: brightness(0.9);
+    transition: filter 0.2s ease;
+  }
+
+  /* Pressed scale effect for 80ms */
+  .press-scale:active {
+    transform: scale(0.98);
+    transition: transform 80ms ease;
   }
 
   /* Smooth transitions for all interactive elements */
@@ -286,6 +241,49 @@
   a,
   input {
     transition: all 0.2s ease;
+  }
+
+  /* Line length constraint ~70 characters */
+  .content-width {
+    max-width: 70ch;
+  }
+
+  /* Line clamp utilities */
+  .line-clamp-6 {
+    display: -webkit-box;
+    -webkit-line-clamp: 6;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  .line-clamp-12 {
+    display: -webkit-box;
+    -webkit-line-clamp: 12;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* Custom scrollbar with earthy colors */
+  .terminal-scroll::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  .terminal-scroll::-webkit-scrollbar-track {
+    background: rgba(122, 143, 128, 0.1);
+  }
+
+  .terminal-scroll::-webkit-scrollbar-thumb {
+    background: var(--muted);
+    border-radius: 4px;
+  }
+
+  .terminal-scroll::-webkit-scrollbar-thumb:hover {
+    background: var(--focus);
+  }
+
+  /* Safe area for mobile */
+  .safe-area-pb {
+    padding-bottom: env(safe-area-inset-bottom);
   }
 }
 
@@ -299,8 +297,8 @@ body::before {
   height: 100%;
   opacity: 0.03;
   z-index: -1;
-  background-image: radial-gradient(circle at 25% 25%, var(--sage) 1px, transparent 1px),
-    radial-gradient(circle at 75% 75%, var(--terracotta) 1px, transparent 1px);
+  background-image: radial-gradient(circle at 25% 25%, var(--muted) 1px, transparent 1px),
+    radial-gradient(circle at 75% 75%, var(--accent) 1px, transparent 1px);
   background-size: 8px 8px;
   pointer-events: none;
 }
