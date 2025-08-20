@@ -445,13 +445,13 @@ const basicCommands: Command[] = [
         <div className="space-y-3">
           <p>
             <span className="text-muted-foreground">Email:</span>{" "}
-            <a href="mailto:hi@dhruva.life" className="text-accent hover:underline">
-              hi@dhruva.life
+            <a href="mailto:0xdhruva@gmail.com" className="text-accent hover:underline">
+              0xdhruva@gmail.com
             </a>
           </p>
           <p>
             <span className="text-muted-foreground">Socials:</span>{" "}
-            <a href="https://x.com/arenatwox" className="text-accent hover:underline">
+            <a href="https://x.com/dhrude/" className="text-accent hover:underline">
               X/Twitter
             </a>
             ,{" "}
@@ -459,14 +459,14 @@ const basicCommands: Command[] = [
               LinkedIn
             </a>
             ,{" "}
-            <a href="https://instagram.com/dhruva" className="text-accent hover:underline">
+            <a href="https://instagram.com/dhrude/" className="text-accent hover:underline">
               Instagram
             </a>
           </p>
           <p>
-            <span className="text-muted-foreground">Book a chat:</span>{" "}
-            <a href="#" className="text-accent hover:underline">
-              link placeholder
+            <span className="text-muted-foreground">Quick Catchup:</span>{" "}
+            <a href="https://calendar.app.google/586qyoAWdRjQMcB1A" className="text-accent hover:underline">
+              Book a time
             </a>
           </p>
           <p>
