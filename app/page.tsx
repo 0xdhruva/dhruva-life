@@ -11,6 +11,7 @@ import { useTheme } from "@/hooks/use-theme"
 export default function HomePage() {
   const [bootCompleted, setBootCompleted] = useState(false)
   const [showCommandPalette, setShowCommandPalette] = useState(false)
+  const [hasExecutedCommand, setHasExecutedCommand] = useState(false)
   const containerRef = useRef<HTMLDivElement>(null)
   const { theme } = useTheme()
 
@@ -23,6 +24,7 @@ export default function HomePage() {
 
   const handleExecuteCommand = (command: string) => {
     executeCommand(command)
+    setHasExecutedCommand(true)
     // Scroll to top after a brief delay to allow content to render
     setTimeout(() => {
       if (containerRef.current) {
@@ -45,9 +47,7 @@ export default function HomePage() {
 
   return (
     <div ref={containerRef} className="min-h-screen bg-background text-foreground font-mono overflow-y-auto">
-      <div className={bootCompleted ? "opacity-75" : "opacity-100"}>
-        <BootScreen onComplete={handleBootComplete} />
-      </div>
+      <BootScreen onComplete={handleBootComplete} hasExecutedCommand={hasExecutedCommand} />
 
       {bootCompleted && (
         <Terminal
