@@ -49,10 +49,10 @@ const basicCommands: Command[] = [
     category: "Core",
     tier: "basic",
     execute: (args, discoveryState) => {
-      const progress = discoveryState?.basicCommandsUsed || 0;
-      const advancedUnlocked = discoveryState?.advancedUnlocked || false;
-      const showingHints = discoveryState?.showingHints || false;
-      const easterEggsFound = discoveryState?.easterEggsFound?.length || 0;
+      const progress = discoveryState?.basicCommandsUsed || 0
+      const advancedUnlocked = discoveryState?.advancedUnlocked || false
+      const showingHints = discoveryState?.showingHints || false
+      const easterEggsFound = discoveryState?.easterEggsFound?.length || 0
 
       return {
         content: (
@@ -74,11 +74,21 @@ const basicCommands: Command[] = [
                 </span>
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm pl-6">
-                <div><span className="text-accent">about</span> - Learn about Dhruva</div>
-                <div><span className="text-accent">work</span> - Current projects</div>
-                <div><span className="text-accent">contact</span> - Get in touch</div>
-                <div><span className="text-accent">now</span> - What I'm doing now</div>
-                <div><span className="text-accent">writing</span> - Read blog posts</div>
+                <div>
+                  <span className="text-accent">about</span> - Learn about Dhruva
+                </div>
+                <div>
+                  <span className="text-accent">work</span> - Current projects
+                </div>
+                <div>
+                  <span className="text-accent">contact</span> - Get in touch
+                </div>
+                <div>
+                  <span className="text-accent">now</span> - What I'm doing now
+                </div>
+                <div>
+                  <span className="text-accent">writing</span> - Read blog posts
+                </div>
               </div>
             </div>
 
@@ -93,15 +103,33 @@ const basicCommands: Command[] = [
                   </span>
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm pl-6">
-                  <div><span className="text-olive">stack</span> - My tech stack</div>
-                  <div><span className="text-olive">github</span> - GitHub activity</div>
-                  <div><span className="text-olive">research</span> - Research interests</div>
-                  <div><span className="text-olive">journey</span> - Personal story</div>
-                  <div><span className="text-olive">philosophy</span> - Core beliefs</div>
-                  <div><span className="text-olive">gigs</span> - Concert history</div>
-                  <div><span className="text-olive">vinyls</span> - Record collection</div>
-                  <div><span className="text-olive">spotify</span> - Current playlist</div>
-                  <div><span className="text-olive">random</span> - Random thoughts</div>
+                  <div>
+                    <span className="text-olive">stack</span> - My tech stack
+                  </div>
+                  <div>
+                    <span className="text-olive">github</span> - GitHub activity
+                  </div>
+                  <div>
+                    <span className="text-olive">research</span> - Research interests
+                  </div>
+                  <div>
+                    <span className="text-olive">journey</span> - Personal story
+                  </div>
+                  <div>
+                    <span className="text-olive">philosophy</span> - Core beliefs
+                  </div>
+                  <div>
+                    <span className="text-olive">gigs</span> - Concert history
+                  </div>
+                  <div>
+                    <span className="text-olive">vinyls</span> - Record collection
+                  </div>
+                  <div>
+                    <span className="text-olive">spotify</span> - Current playlist
+                  </div>
+                  <div>
+                    <span className="text-olive">random</span> - Random thoughts
+                  </div>
                 </div>
               </div>
             ) : (
@@ -113,7 +141,9 @@ const basicCommands: Command[] = [
                     Locked - Try {3 - progress} more basic commands
                   </span>
                 </h4>
-                <p className="text-muted-foreground text-sm pl-6">Use more basic commands to unlock deeper exploration...</p>
+                <p className="text-muted-foreground text-sm pl-6">
+                  Use more basic commands to unlock deeper exploration...
+                </p>
               </div>
             )}
 
@@ -129,7 +159,7 @@ const basicCommands: Command[] = [
                 </h4>
                 <div className="space-y-2 text-sm pl-6">
                   <div className="text-teal-stone italic">
-                    "Brazilian art form meets flowing movement..." 
+                    "Brazilian art form meets flowing movement..."
                     <span className="text-muted-foreground/60 ml-2">Try: jits</span>
                   </div>
                   <div className="text-teal-stone italic">
@@ -159,7 +189,9 @@ const basicCommands: Command[] = [
                     Hidden - Explore more advanced commands
                   </span>
                 </h4>
-                <p className="text-muted-foreground text-sm pl-6">There are hidden treasures waiting to be discovered...</p>
+                <p className="text-muted-foreground text-sm pl-6">
+                  There are hidden treasures waiting to be discovered...
+                </p>
               </div>
             ) : null}
 
@@ -186,11 +218,12 @@ const basicCommands: Command[] = [
             </div>
 
             <p className="text-muted-foreground/70 text-sm border-t border-border/20 pt-4">
-              💡 <strong>Discovery:</strong> Each layer unlocks as you explore deeper. Start with basic commands to reveal more.
+              💡 <strong>Discovery:</strong> Each layer unlocks as you explore deeper. Start with basic commands to
+              reveal more.
             </p>
           </div>
         ),
-      };
+      }
     },
   },
   {
@@ -275,9 +308,7 @@ const basicCommands: Command[] = [
                       <span className="text-muted-foreground mx-2">•</span>
                       <span
                         className={`text-xs px-2 py-1 rounded ${
-                          project.status === "Active"
-                            ? "bg-accent/20 text-accent"
-                            : "bg-muted/20 text-muted-foreground"
+                          project.status === "Active" ? "bg-accent/20 text-accent" : "bg-muted/20 text-muted-foreground"
                         }`}
                       >
                         {project.status}
@@ -416,8 +447,8 @@ const basicCommands: Command[] = [
             <span className="text-muted-foreground">Email:</span> hi@dhruva.life
           </p>
           <p>
-            <span className="text-muted-foreground">Socials:</span> X/Twitter (@arenatwox), LinkedIn (/in/dhruva), Instagram
-            (@dhruva)
+            <span className="text-muted-foreground">Socials:</span> X/Twitter (@arenatwox), LinkedIn (/in/dhruva),
+            Instagram (@dhruva)
           </p>
           <p>
             <span className="text-muted-foreground">Book a chat:</span>{" "}
@@ -470,17 +501,25 @@ const advancedCommands: Command[] = [
   {
     name: "github",
     description: "GitHub activity and contributions",
-    category: "Core", 
+    category: "Core",
     tier: "advanced",
     execute: () => ({
       content: (
         <div className="space-y-4">
           <h3 className="text-olive font-semibold">GitHub Activity</h3>
           <div className="space-y-2">
-            <p><span className="text-muted-foreground">Username:</span> @dhruva-chakravarthi</p>
-            <p><span className="text-muted-foreground">Repositories:</span> 50+ public</p>
-            <p><span className="text-muted-foreground">Languages:</span> TypeScript, Python, Solidity</p>
-            <p><span className="text-muted-foreground">Recent:</span> Graicie AI, CultureCo, ArenaTwo</p>
+            <p>
+              <span className="text-muted-foreground">Username:</span> @dhruva-chakravarthi
+            </p>
+            <p>
+              <span className="text-muted-foreground">Repositories:</span> 50+ public
+            </p>
+            <p>
+              <span className="text-muted-foreground">Languages:</span> TypeScript, Python, Solidity
+            </p>
+            <p>
+              <span className="text-muted-foreground">Recent:</span> Graicie AI, CultureCo, ArenaTwo
+            </p>
           </div>
           <a href="https://github.com/dhruva-chakravarthi" className="text-olive hover:underline">
             View Profile →
@@ -493,7 +532,7 @@ const advancedCommands: Command[] = [
     name: "research",
     description: "Research interests and explorations",
     category: "Core",
-    tier: "advanced", 
+    tier: "advanced",
     execute: () => ({
       content: (
         <div className="space-y-4">
@@ -501,7 +540,9 @@ const advancedCommands: Command[] = [
           <div className="space-y-3">
             <div>
               <h4 className="text-foreground font-medium">AI Systems</h4>
-              <p className="text-muted-foreground/80">Multimodal models for sports analysis, embodied AI for movement</p>
+              <p className="text-muted-foreground/80">
+                Multimodal models for sports analysis, embodied AI for movement
+              </p>
             </div>
             <div>
               <h4 className="text-foreground font-medium">Community Dynamics</h4>
@@ -517,7 +558,7 @@ const advancedCommands: Command[] = [
     }),
   },
   {
-    name: "journey", 
+    name: "journey",
     description: "Personal and professional story",
     category: "Core",
     tier: "advanced",
@@ -555,11 +596,15 @@ const advancedCommands: Command[] = [
           <div className="space-y-3">
             <div>
               <p className="text-accent font-medium">"Build positive-sum systems where communities thrive"</p>
-              <p className="text-muted-foreground/80">Technology should amplify collective intelligence, not extract from it</p>
+              <p className="text-muted-foreground/80">
+                Technology should amplify collective intelligence, not extract from it
+              </p>
             </div>
             <div>
-              <p className="text-accent font-medium">"Flow states are everywhere"</p> 
-              <p className="text-muted-foreground/80">From code to combat, creativity emerges when we find the rhythm</p>
+              <p className="text-accent font-medium">"Flow states are everywhere"</p>
+              <p className="text-muted-foreground/80">
+                From code to combat, creativity emerges when we find the rhythm
+              </p>
             </div>
             <div>
               <p className="text-accent font-medium">"Culture is the compass"</p>
@@ -572,26 +617,28 @@ const advancedCommands: Command[] = [
   },
   {
     name: "gigs",
-    description: "Concert and live music history", 
+    description: "Concert and live music history",
     category: "Core",
     tier: "advanced",
     execute: () => {
       // Fetch gig data from Vercel blob
       const fetchGigs = async () => {
         try {
-          const response = await fetch('https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Gig%20List-zVc8TZ9eLBWTtxidiKN2zrBO2uBabd.csv');
-          const csvText = await response.text();
-          
+          const response = await fetch(
+            "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/The%20Gig%20List-zVc8TZ9eLBWTtxidiKN2zrBO2uBabd.csv",
+          )
+          const csvText = await response.text()
+
           // Parse CSV (simple parser for this use case)
-          const lines = csvText.split('\n').slice(1); // Skip header
+          const lines = csvText.split("\n").slice(1) // Skip header
           const gigs = lines
-            .filter(line => line.trim())
-            .map(line => {
-              const [artist, venue, date, city] = line.split(',').map(item => item.trim().replace(/"/g, ''));
-              return { artist, venue, date, city };
+            .filter((line) => line.trim())
+            .map((line) => {
+              const [artist, venue, date, city] = line.split(",").map((item) => item.trim().replace(/"/g, ""))
+              return { artist, venue, date, city }
             })
-            .slice(0, 10); // Show latest 10
-          
+            .slice(0, 10) // Show latest 10
+
           return (
             <div className="space-y-4">
               <h3 className="text-olive font-semibold">Live Music</h3>
@@ -600,13 +647,17 @@ const advancedCommands: Command[] = [
                   <div key={index}>
                     <span className="text-foreground font-medium">{gig.artist}</span>
                     <span className="text-muted-foreground mx-2">•</span>
-                    <span className="text-muted-foreground">{gig.venue} {gig.date}</span>
+                    <span className="text-muted-foreground">
+                      {gig.venue} {gig.date}
+                    </span>
                   </div>
                 ))}
               </div>
-              <p className="text-muted-foreground/70 text-sm">Live music is temporary community - shared rhythm, shared moment</p>
+              <p className="text-muted-foreground/70 text-sm">
+                Live music is temporary community - shared rhythm, shared moment
+              </p>
             </div>
-          );
+          )
         } catch (error) {
           return (
             <div className="space-y-4">
@@ -619,7 +670,7 @@ const advancedCommands: Command[] = [
                 </div>
                 <div>
                   <span className="text-foreground font-medium">Bonobo</span>
-                  <span className="text-muted-foreground mx-2">•</span> 
+                  <span className="text-muted-foreground mx-2">•</span>
                   <span className="text-muted-foreground">Brooklyn Steel 2019</span>
                 </div>
                 <div>
@@ -628,11 +679,13 @@ const advancedCommands: Command[] = [
                   <span className="text-muted-foreground">Elsewhere 2020</span>
                 </div>
               </div>
-              <p className="text-muted-foreground/70 text-sm">Live music is temporary community - shared rhythm, shared moment</p>
+              <p className="text-muted-foreground/70 text-sm">
+                Live music is temporary community - shared rhythm, shared moment
+              </p>
             </div>
-          );
+          )
         }
-      };
+      }
 
       // For now, return static content since we can't use async in this context
       // TODO: Implement proper async data fetching in the terminal component
@@ -648,7 +701,7 @@ const advancedCommands: Command[] = [
               </div>
               <div>
                 <span className="text-foreground font-medium">Bonobo</span>
-                <span className="text-muted-foreground mx-2">•</span> 
+                <span className="text-muted-foreground mx-2">•</span>
                 <span className="text-muted-foreground">Brooklyn Steel 2019</span>
               </div>
               <div>
@@ -657,17 +710,19 @@ const advancedCommands: Command[] = [
                 <span className="text-muted-foreground">Elsewhere 2020</span>
               </div>
             </div>
-            <p className="text-muted-foreground/70 text-sm">Live music is temporary community - shared rhythm, shared moment</p>
+            <p className="text-muted-foreground/70 text-sm">
+              Live music is temporary community - shared rhythm, shared moment
+            </p>
             <p className="text-muted-foreground/60 text-xs">(Loading from gig database...)</p>
           </div>
         ),
-      };
+      }
     },
   },
   {
     name: "vinyls",
     description: "Record collection highlights",
-    category: "Core", 
+    category: "Core",
     tier: "advanced",
     execute: () => ({
       content: (
@@ -690,7 +745,7 @@ const advancedCommands: Command[] = [
               <span className="text-muted-foreground">Migration (Deluxe edition)</span>
             </div>
           </div>
-          <p className="text-muted-foreground/70 text-sm">Analog warmth > digital precision</p>
+          <p className="text-muted-foreground/70 text-sm">Analog warmth {">"} digital precision</p>
         </div>
       ),
     }),
@@ -699,7 +754,7 @@ const advancedCommands: Command[] = [
     name: "spotify",
     description: "Current playlist and listening habits",
     category: "Core",
-    tier: "advanced", 
+    tier: "advanced",
     execute: () => ({
       content: (
         <div className="space-y-4">
@@ -721,14 +776,16 @@ const advancedCommands: Command[] = [
               <span className="text-muted-foreground">Jazz & reflection</span>
             </div>
           </div>
-          <a href="#" className="text-olive hover:underline">Follow on Spotify →</a>
+          <a href="#" className="text-olive hover:underline">
+            Follow on Spotify →
+          </a>
         </div>
       ),
     }),
   },
   {
     name: "random",
-    description: "Random thoughts and observations", 
+    description: "Random thoughts and observations",
     category: "Core",
     tier: "advanced",
     execute: () => ({
@@ -739,9 +796,9 @@ const advancedCommands: Command[] = [
             {[
               "The best technical solutions feel inevitable in hindsight",
               "Jiu-jitsu is chess with your body as the pieces",
-              "Community forms around shared struggle, not shared comfort", 
+              "Community forms around shared struggle, not shared comfort",
               "Vinyl records are meditation objects for the digital age",
-              "Code is culture made executable"
+              "Code is culture made executable",
             ].map((thought, index) => (
               <div key={index} className="border-l-2 border-olive/30 pl-4">
                 <p className="text-muted-foreground/80 italic">"{thought}"</p>
@@ -1109,7 +1166,9 @@ ${post.content}`}
               placeholder="your@email.com"
               className="bg-muted/10 border border-border/30 rounded px-3 py-2 text-foreground placeholder-sage/50 flex-1"
             />
-            <button className="bg-terracotta hover:bg-terracotta/80 text-foreground px-4 py-2 rounded">Subscribe</button>
+            <button className="bg-terracotta hover:bg-terracotta/80 text-foreground px-4 py-2 rounded">
+              Subscribe
+            </button>
           </div>
           <p className="text-muted-foreground/60 text-sm">Get notified about new projects and writing.</p>
         </div>
@@ -1371,7 +1430,7 @@ const asciiEasterEggs: Command[] = [
   },
 ]
 
-// Secret Commands (Tier 3 - Easter eggs with animations)  
+// Secret Commands (Tier 3 - Easter eggs with animations)
 const secretCommands: Command[] = [
   {
     name: "jits",
@@ -1391,15 +1450,13 @@ const secretCommands: Command[] = [
           </div>
         ),
         unlockMessage: (
-          <div className="text-teal-stone text-sm font-medium">
-            ✧ Easter Egg Unlocked: Brazilian Flow ✧
-          </div>
+          <div className="text-teal-stone text-sm font-medium">✧ Easter Egg Unlocked: Brazilian Flow ✧</div>
         ),
       }
     },
   },
   {
-    name: "analog", 
+    name: "analog",
     description: "Vinyl record spinning animation",
     category: "Easter Eggs",
     tier: "secret",
@@ -1407,7 +1464,7 @@ const secretCommands: Command[] = [
       const frames = [
         "    ╭─────────╮\n    │  ●───○  │\n    │    ●    │\n    │  ○───●  │\n    ╰─────────╯",
         "    ╭─────────╮\n    │  ○───●  │\n    │    ○    │\n    │  ●───○  │\n    ╰─────────╯",
-        "    ╭─────────╮\n    │  ●───○  │\n    │    ●    │\n    │  ○───●  │\n    ╰─────────╯", 
+        "    ╭─────────╮\n    │  ●───○  │\n    │    ●    │\n    │  ○───●  │\n    ╰─────────╯",
         "    ╭─────────╮\n    │  ○───●  │\n    │    ○    │\n    │  ●───○  │\n    ╰─────────╯",
       ]
       return {
@@ -1420,17 +1477,13 @@ const secretCommands: Command[] = [
             <ReplayButton command="analog" />
           </div>
         ),
-        unlockMessage: (
-          <div className="text-teal-stone text-sm font-medium">
-            ✧ Easter Egg Unlocked: Vinyl Spin ✧
-          </div>
-        ),
+        unlockMessage: <div className="text-teal-stone text-sm font-medium">✧ Easter Egg Unlocked: Vinyl Spin ✧</div>,
       }
     },
   },
   {
     name: "matrix",
-    description: "Digital rain animation", 
+    description: "Digital rain animation",
     category: "Easter Eggs",
     tier: "secret",
     execute: () => {
@@ -1444,18 +1497,14 @@ const secretCommands: Command[] = [
             <ReplayButton command="matrix" />
           </div>
         ),
-        unlockMessage: (
-          <div className="text-teal-stone text-sm font-medium">
-            ✧ Easter Egg Unlocked: Digital Rain ✧
-          </div>
-        ),
+        unlockMessage: <div className="text-teal-stone text-sm font-medium">✧ Easter Egg Unlocked: Digital Rain ✧</div>,
       }
     },
   },
   {
     name: "rangoli",
     description: "Sacred geometry bloom animation",
-    category: "Easter Eggs", 
+    category: "Easter Eggs",
     tier: "secret",
     execute: () => {
       const frames = ["    ·    ", "   ·•·   ", "  ·•○•·  ", " ·•○●○•· ", "·•○●◆●○•·", "•○●◆◇◆●○•"]
@@ -1470,9 +1519,7 @@ const secretCommands: Command[] = [
           </div>
         ),
         unlockMessage: (
-          <div className="text-teal-stone text-sm font-medium">
-            ✧ Easter Egg Unlocked: Sacred Geometry ✧
-          </div>
+          <div className="text-teal-stone text-sm font-medium">✧ Easter Egg Unlocked: Sacred Geometry ✧</div>
         ),
       }
     },
@@ -1481,16 +1528,14 @@ const secretCommands: Command[] = [
     name: "play",
     description: "Infinite game meditation",
     category: "Easter Eggs",
-    tier: "secret", 
+    tier: "secret",
     execute: () => {
-      const symbols = ["○", "◯", "⊙", "●", "⚫", "⬤", "🎯"];
-      const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)];
+      const symbols = ["○", "◯", "⊙", "●", "⚫", "⬤", "🎯"]
+      const randomSymbol = symbols[Math.floor(Math.random() * symbols.length)]
       return {
         content: (
           <div className="space-y-4 text-center">
-            <div className="text-6xl text-teal-stone animate-pulse">
-              {randomSymbol}
-            </div>
+            <div className="text-6xl text-teal-stone animate-pulse">{randomSymbol}</div>
             <div className="space-y-2">
               <p className="text-teal-stone font-medium">The point of an infinite game is to keep playing</p>
               <p className="text-muted-foreground/70 text-sm italic">Press play again. Each moment, different.</p>
@@ -1499,9 +1544,7 @@ const secretCommands: Command[] = [
           </div>
         ),
         unlockMessage: (
-          <div className="text-teal-stone text-sm font-medium">
-            ✧ Easter Egg Unlocked: Infinite Game ✧
-          </div>
+          <div className="text-teal-stone text-sm font-medium">✧ Easter Egg Unlocked: Infinite Game ✧</div>
         ),
       }
     },
@@ -1538,9 +1581,9 @@ export function executeCommand(input: string, discoveryState?: DiscoveryState): 
   }
 
   // Check if command is accessible based on discovery state
-  const advancedUnlocked = discoveryState?.advancedUnlocked || false;
-  const showingHints = discoveryState?.showingHints || false;
-  
+  const advancedUnlocked = discoveryState?.advancedUnlocked || false
+  const showingHints = discoveryState?.showingHints || false
+
   if (command.tier === "advanced" && !advancedUnlocked) {
     return {
       content: (
@@ -1549,9 +1592,7 @@ export function executeCommand(input: string, discoveryState?: DiscoveryState): 
           <p className="text-muted-foreground/70 text-sm">
             Try {3 - (discoveryState?.basicCommandsUsed || 0)} more basic commands to unlock advanced features.
           </p>
-          <p className="text-ochre text-sm italic">
-            Hint: about, work, contact, now, writing
-          </p>
+          <p className="text-ochre text-sm italic">Hint: about, work, contact, now, writing</p>
         </div>
       ),
       type: "error",
@@ -1574,7 +1615,7 @@ export function executeCommand(input: string, discoveryState?: DiscoveryState): 
 
   try {
     const result = command.execute(args, discoveryState)
-    
+
     // Add unlock notification for easter eggs
     if (command.tier === "secret" && result.unlockMessage) {
       return {
@@ -1587,7 +1628,7 @@ export function executeCommand(input: string, discoveryState?: DiscoveryState): 
         ),
       }
     }
-    
+
     return result
   } catch (error) {
     return {
@@ -1605,18 +1646,18 @@ export function getCommandSuggestions(input: string, discoveryState?: DiscoveryS
   const query = input.toLowerCase()
   const advancedUnlocked = discoveryState?.advancedUnlocked || false
   const showingHints = discoveryState?.showingHints || false
-  
+
   return allCommands
     .filter((cmd) => {
       // Always show basic commands and utilities
       if (cmd.tier === "basic") return true
-      
+
       // Show advanced commands only if unlocked
       if (cmd.tier === "advanced" && !advancedUnlocked) return false
-      
+
       // Show secret commands only if hints are showing
       if (cmd.tier === "secret" && !showingHints) return false
-      
+
       return true
     })
     .filter((cmd) => cmd.name.toLowerCase().startsWith(query))
