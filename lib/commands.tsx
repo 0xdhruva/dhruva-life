@@ -454,21 +454,41 @@ const basicCommands: Command[] = [
           </p>
           <p>
             <span className="text-muted-foreground">Socials:</span>{" "}
-            <a href="https://x.com/dhrude/" className="text-accent hover:underline">
+            <a
+              href="https://x.com/dhrude/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
               X/Twitter
             </a>
             ,{" "}
-            <a href="https://in.linkedin.com/in/dhruva-chakravarthi" className="text-accent hover:underline">
+            <a
+              href="https://in.linkedin.com/in/dhruva-chakravarthi"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
               LinkedIn
             </a>
             ,{" "}
-            <a href="https://instagram.com/dhrude/" className="text-accent hover:underline">
+            <a
+              href="https://instagram.com/dhrude/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
               Instagram
             </a>
           </p>
           <p>
             <span className="text-muted-foreground">Quick Catchup:</span>{" "}
-            <a href="https://calendar.app.google/586qyoAWdRjQMcB1A" className="text-accent hover:underline">
+            <a
+              href="https://calendar.app.google/586qyoAWdRjQMcB1A"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent hover:underline"
+            >
               Book a time
             </a>
           </p>
