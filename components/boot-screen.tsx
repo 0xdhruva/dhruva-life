@@ -51,7 +51,7 @@ export function BootScreen({ onComplete, hasExecutedCommand }: BootScreenProps) 
 
   if (skipped && hasExecutedCommand) {
     return (
-      <div className="font-mono mb-8">
+      <div className="flex items-center justify-center font-mono mb-8">
         <div className="text-left space-y-4 max-w-[70ch] px-6 opacity-75 transition-opacity duration-300">
           {bootSequence.map((line, index) => (
             <div
@@ -76,7 +76,7 @@ export function BootScreen({ onComplete, hasExecutedCommand }: BootScreenProps) 
 
   if (skipped) {
     return (
-      <div className="font-mono mb-8">
+      <div className="flex items-center justify-center font-mono mb-8">
         <div className="text-left space-y-4 max-w-[70ch] px-6 opacity-75 transition-opacity duration-300">
           {bootSequence.map((line, index) => (
             <div
