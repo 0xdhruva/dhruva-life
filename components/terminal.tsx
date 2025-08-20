@@ -54,7 +54,7 @@ export function Terminal({
   }
 
   return (
-    <div className="flex flex-col h-screen bg-background text-foreground">
+    <div className="flex flex-col h-screen bg-background text-foreground font-mono">
       {/* Terminal Content */}
       <div
         ref={terminalRef}
@@ -63,22 +63,17 @@ export function Terminal({
       >
         {hasExecutedCommand && <BootScreen onComplete={onBootComplete} hasExecutedCommand={hasExecutedCommand} />}
 
-        <div className="space-y-4">
+        <div className="space-y-6">
           {output.map((block, index) => (
             <div key={block.id}>
               <OutputBlock {...block} />
-              {(index + 1) % 3 === 0 && index < output.length - 1 && (
-                <div className="text-center text-muted opacity-28 text-sm my-4">
-                  ┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄┄
-                </div>
-              )}
             </div>
           ))}
         </div>
       </div>
 
       {/* Desktop Input */}
-      <div className="hidden md:block border-t border-muted/30 bg-background">
+      <div className="hidden md:block border-t border-muted-foreground/20 bg-background">
         <div style={{ maxWidth: "70ch", margin: "0 auto", width: "100%" }}>
           <TerminalInput
             input={input}

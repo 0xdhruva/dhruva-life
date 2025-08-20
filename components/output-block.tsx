@@ -23,9 +23,9 @@ export function OutputBlock({ id, timestamp, command, content, type = "command" 
   }, [content])
 
   const typeColors = {
-    command: "text-foreground", // Fixed invalid text-fg class
-    error: "text-red-400",
-    success: "text-success",
+    command: "text-foreground",
+    error: "text-destructive",
+    success: "text-primary",
   }
 
   const handleCopyLink = async () => {
@@ -36,7 +36,8 @@ export function OutputBlock({ id, timestamp, command, content, type = "command" 
 
     const toast = document.createElement("div")
     toast.textContent = "Link copied."
-    toast.className = "fixed top-4 right-4 bg-accent text-bg px-3 py-2 rounded text-sm z-50 transition-opacity"
+    toast.className =
+      "fixed top-4 right-4 bg-primary text-primary-foreground px-3 py-2 rounded text-sm z-50 transition-opacity font-mono"
     document.body.appendChild(toast)
     setTimeout(() => {
       toast.style.opacity = "0"
@@ -49,22 +50,21 @@ export function OutputBlock({ id, timestamp, command, content, type = "command" 
   }
 
   return (
-    <div className="group" id={`block-${id}`} style={{ marginBottom: "16px" }}>
+    <div className="group font-mono" id={`block-${id}`}>
       <div className="flex">
-        <div className="w-14 flex-shrink-0 text-right pr-3">
-          <span className="text-warn text-sm opacity-85 font-mono">{timestamp}</span>
+        <div className="w-14 flex-shrink-0 text-right pr-4">
+          <span className="text-muted-foreground text-sm opacity-85">{timestamp}</span>
         </div>
 
         <div className="flex-1 min-w-0">
-          {/* Command line */}
-          <div className="flex items-center mb-2">
-            <span className="text-accent mr-2">❯</span>
-            <span className="text-muted text-sm">{command}</span>
+          <div className="flex items-center mb-3">
+            <span className="text-primary mr-2 text-base">❯</span>
+            <span className="text-muted-foreground text-base">{command}</span>
 
             <button
               onClick={handleCopyLink}
               onTouchStart={handleCopyLink}
-              className="ml-auto opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-foreground transition-all duration-200 text-xs px-2 py-1 hover:bg-muted/10 rounded" // Fixed text-fg to text-foreground
+              className="ml-auto opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-foreground transition-all duration-200 text-xs px-2 py-1 hover:bg-muted/10 rounded"
               style={{ transform: "scale(1)", transition: "transform 80ms ease" }}
               onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.98)")}
               onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
@@ -74,8 +74,7 @@ export function OutputBlock({ id, timestamp, command, content, type = "command" 
             </button>
           </div>
 
-          {/* Content */}
-          <div className={`${typeColors[type]} leading-7`}>
+          <div className={`${typeColors[type]} text-base leading-7`}>
             {isLongContent && !showMore ? (
               <div>
                 <div
@@ -90,7 +89,7 @@ export function OutputBlock({ id, timestamp, command, content, type = "command" 
                 </div>
                 <button
                   onClick={() => setShowMore(true)}
-                  className="mt-3 px-3 py-1 text-sm border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 rounded-full" // Fixed border-accent to border-primary
+                  className="mt-4 px-4 py-2 text-sm border border-muted-foreground/30 text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-200 rounded-full"
                   style={{
                     height: "32px",
                     transform: "scale(1)",
@@ -109,7 +108,7 @@ export function OutputBlock({ id, timestamp, command, content, type = "command" 
                 {isLongContent && showMore && (
                   <button
                     onClick={() => setShowMore(false)}
-                    className="mt-3 px-3 py-1 text-sm border border-muted text-muted-foreground hover:bg-muted hover:text-background transition-all duration-200 rounded-full" // Fixed text-muted and hover:text-bg
+                    className="mt-4 px-4 py-2 text-sm border border-muted-foreground/30 text-muted-foreground hover:bg-muted hover:text-foreground transition-all duration-200 rounded-full"
                     style={{
                       height: "32px",
                       transform: "scale(1)",
