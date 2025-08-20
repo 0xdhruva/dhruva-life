@@ -57,19 +57,19 @@
   --card-foreground: var(--bone);
   --popover: var(--peat);
   --popover-foreground: var(--bone);
-  --primary: var(--bone);
-  --primary-foreground: var(--peat);
-  --secondary: var(--terracotta);
+  --primary: var(--terracotta);
+  --primary-foreground: var(--bone);
+  --secondary: var(--sage);
   --secondary-foreground: var(--bone);
-  --muted: var(--terracotta);
+  --muted: var(--sage);
   --muted-foreground: var(--bone);
-  --accent: var(--bone);
+  --accent: var(--teal-stone);
   --accent-foreground: var(--bone);
   --destructive: #ef4444;
   --destructive-foreground: var(--bone);
-  --border: var(--terracotta);
-  --input: var(--terracotta);
-  --ring: var(--bone);
+  --border: var(--sage);
+  --input: var(--sage);
+  --ring: var(--teal-stone);
   --radius: 0.5rem;
   --sidebar: #1b1f1a;
   --sidebar-foreground: #ede6da;
@@ -149,6 +149,8 @@
     font-size: 18px;
     letter-spacing: -0.01em;
     line-height: 1.5;
+    font-family: var(--font-jetbrains-mono), ui-monospace, SFMono-Regular, "SF Mono", Monaco, Consolas,
+      "Liberation Mono", "Courier New", monospace;
   }
 
   /* Mobile typography - 16px base */
@@ -204,6 +206,7 @@
   .focus-ring:focus-visible {
     outline: 2px solid var(--teal-stone);
     outline-offset: 2px;
+    border-radius: 4px;
   }
 
   /* Thick, steady cursor */
@@ -213,6 +216,7 @@
     height: 1.2em;
     background-color: var(--terracotta);
     animation: blink 1s infinite;
+    border-radius: 1px;
   }
 
   @keyframes blink {
@@ -269,6 +273,19 @@
 
   .space-baseline-3 {
     margin: 24px 0;
+  }
+
+  /* Enhanced hover states for interactive elements */
+  .hover-lift:hover {
+    transform: translateY(-1px);
+    transition: transform 0.2s ease;
+  }
+
+  /* Smooth transitions for all interactive elements */
+  button,
+  a,
+  input {
+    transition: all 0.2s ease;
   }
 }
 

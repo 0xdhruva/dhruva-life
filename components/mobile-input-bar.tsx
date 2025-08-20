@@ -50,9 +50,9 @@ export function MobileInputBar({ input, setInput, executeCommand, onOpenPalette 
               variant="ghost"
               size="sm"
               onClick={() => handleQuickCommand(command)}
-              className="flex-shrink-0 h-8 px-3 text-sage hover:text-bone hover:bg-sage/20 text-xs"
+              className="flex-shrink-0 h-10 px-4 text-sage hover:text-bone hover:bg-sage/20 text-sm min-w-[80px] transition-colors"
             >
-              <span className="mr-1">{icon}</span>
+              <span className="mr-2">{icon}</span>
               {label}
             </Button>
           ))}
@@ -66,7 +66,7 @@ export function MobileInputBar({ input, setInput, executeCommand, onOpenPalette 
               variant="ghost"
               size="sm"
               onClick={onOpenPalette}
-              className="h-8 w-8 p-0 text-terracotta hover:text-bone hover:bg-terracotta/20"
+              className="h-10 w-10 p-0 text-terracotta hover:text-bone hover:bg-terracotta/20 transition-colors"
             >
               ✨
             </Button>
@@ -74,7 +74,7 @@ export function MobileInputBar({ input, setInput, executeCommand, onOpenPalette 
               variant="ghost"
               size="sm"
               onClick={toggleTheme}
-              className="h-8 w-8 p-0 text-sage hover:text-bone hover:bg-sage/20"
+              className="h-10 w-10 p-0 text-sage hover:text-bone hover:bg-sage/20 transition-colors"
             >
               🌓
             </Button>
@@ -82,18 +82,25 @@ export function MobileInputBar({ input, setInput, executeCommand, onOpenPalette 
         </div>
 
         <form onSubmit={handleSubmit} className="flex space-x-3">
-          <div className="flex-1 flex items-center space-x-3 bg-sage/10 rounded-md px-4 py-3 min-h-[48px]">
+          <div className="flex-1 flex items-center space-x-3 bg-sage/10 rounded-md px-4 py-3 min-h-[48px] focus-within:ring-2 focus-within:ring-teal-stone transition-all">
             <span className="text-terracotta text-lg">❯</span>
             <Input
               value={input}
               onChange={(e) => setInput(e.target.value)}
               placeholder="Type command..."
-              className="flex-1 bg-transparent border-none outline-none text-bone placeholder-sage/50 focus-ring"
+              className="flex-1 bg-transparent border-none outline-none text-bone placeholder-sage/50 focus:ring-0 focus:ring-offset-0"
               autoComplete="off"
+              autoCorrect="off"
+              autoCapitalize="off"
               spellCheck={false}
+              inputMode="text"
             />
           </div>
-          <Button type="submit" size="sm" className="bg-terracotta hover:bg-terracotta/80 text-bone min-h-[48px] px-4">
+          <Button
+            type="submit"
+            size="sm"
+            className="bg-terracotta hover:bg-terracotta/80 text-bone min-h-[48px] px-6 transition-colors"
+          >
             ↵
           </Button>
         </form>

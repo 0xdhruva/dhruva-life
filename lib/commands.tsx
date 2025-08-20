@@ -39,29 +39,132 @@ const coreCommands: Command[] = [
     category: "Core",
     execute: () => ({
       content: (
-        <div className="space-y-4">
-          <h3 className="text-terracotta font-semibold">Available commands</h3>
-          <div className="space-y-3">
+        <div className="space-y-6">
+          <div>
+            <h3 className="text-terracotta font-semibold text-lg mb-3">Available Commands</h3>
+            <p className="text-sage/80 text-sm mb-4">
+              Commands are case-insensitive. Try typing a few letters and press Tab for autocomplete.
+            </p>
+          </div>
+
+          <div className="space-y-4">
             <div>
-              <h4 className="text-sage font-medium mb-1">Core:</h4>
-              <p className="text-sm">about, now, projects, writing, whativedone, resume, contact</p>
+              <h4 className="text-bone font-medium mb-2 flex items-center">
+                <span className="text-sage mr-2">📋</span>
+                Navigation & Identity
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm pl-6">
+                <div>
+                  <span className="text-terracotta">about</span> - Learn about Dhruva
+                </div>
+                <div>
+                  <span className="text-terracotta">now</span> - Current focus and projects
+                </div>
+                <div>
+                  <span className="text-terracotta">projects</span> - View project portfolio
+                </div>
+                <div>
+                  <span className="text-terracotta">writing</span> - Read blog posts
+                </div>
+                <div>
+                  <span className="text-terracotta">whativedone</span> - Weekly changelog
+                </div>
+                <div>
+                  <span className="text-terracotta">resume</span> - View CV and experience
+                </div>
+                <div>
+                  <span className="text-terracotta">contact</span> - Get in touch
+                </div>
+              </div>
             </div>
+
             <div>
-              <h4 className="text-sage font-medium mb-1">Utilities:</h4>
-              <p className="text-sm">
-                search &lt;term&gt;, open &lt;slug&gt;, ls, cat &lt;slug&gt;, clear, history, alias &lt;a&gt;=&lt;b&gt;,
-                theme &lt;dark|light|auto&gt;, subscribe, share
-              </p>
+              <h4 className="text-bone font-medium mb-2 flex items-center">
+                <span className="text-sage mr-2">🛠️</span>
+                Utilities
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm pl-6">
+                <div>
+                  <span className="text-terracotta">search</span> &lt;term&gt; - Search all content
+                </div>
+                <div>
+                  <span className="text-terracotta">open</span> &lt;slug&gt; - Open detailed view
+                </div>
+                <div>
+                  <span className="text-terracotta">ls</span> - List directories
+                </div>
+                <div>
+                  <span className="text-terracotta">cat</span> &lt;slug&gt; - Print raw content
+                </div>
+                <div>
+                  <span className="text-terracotta">clear</span> - Clear terminal
+                </div>
+                <div>
+                  <span className="text-terracotta">history</span> - Show command history
+                </div>
+                <div>
+                  <span className="text-terracotta">alias</span> &lt;a&gt;=&lt;b&gt; - Create shortcuts
+                </div>
+                <div>
+                  <span className="text-terracotta">theme</span> &lt;mode&gt; - Change theme
+                </div>
+              </div>
             </div>
+
             <div>
-              <h4 className="text-sage font-medium mb-1">Easter Eggs:</h4>
-              <p className="text-sm">
-                turntable, linkinpark, vinyl, slapbump, tapout, oss, rangoli, entropy, meditation, polymath, compile,
-                deploy, matrix, 404, southindia, bengaluru, wanderer, coinflip, dice, fortune, glitch, portal
-              </p>
+              <h4 className="text-bone font-medium mb-2 flex items-center">
+                <span className="text-sage mr-2">🎭</span>
+                Easter Eggs & Fun
+              </h4>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-2 text-sm pl-6">
+                <div>
+                  <span className="text-terracotta">turntable</span> - Music vibes
+                </div>
+                <div>
+                  <span className="text-terracotta">slapbump</span> - Jiu-jitsu greeting
+                </div>
+                <div>
+                  <span className="text-terracotta">rangoli</span> - Fractal art
+                </div>
+                <div>
+                  <span className="text-terracotta">matrix</span> - Digital rain
+                </div>
+                <div>
+                  <span className="text-terracotta">coinflip</span> - Random choice
+                </div>
+                <div>
+                  <span className="text-terracotta">meditation</span> - Mindful moment
+                </div>
+                <div className="text-sage/60">...and many more!</div>
+              </div>
             </div>
           </div>
-          <p className="text-sage/70 text-sm mt-4">Tip: press ⌘K (or tap ✨) for the command palette.</p>
+
+          <div className="border-t border-sage/20 pt-4">
+            <h4 className="text-bone font-medium mb-2">Examples:</h4>
+            <div className="space-y-1 text-sm pl-4">
+              <div>
+                <span className="text-sage">❯</span> <span className="text-terracotta">search</span>{" "}
+                <span className="text-bone">jiu-jitsu</span>{" "}
+                <span className="text-sage/60">- Find all jiu-jitsu related content</span>
+              </div>
+              <div>
+                <span className="text-sage">❯</span> <span className="text-terracotta">open</span>{" "}
+                <span className="text-bone">graicie</span>{" "}
+                <span className="text-sage/60">- View Graicie project details</span>
+              </div>
+              <div>
+                <span className="text-sage">❯</span> <span className="text-terracotta">alias</span>{" "}
+                <span className="text-bone">p=projects</span>{" "}
+                <span className="text-sage/60">- Create shortcut 'p' for projects</span>
+              </div>
+            </div>
+          </div>
+
+          <p className="text-sage/70 text-sm border-t border-sage/20 pt-4">
+            💡 <strong>Pro tip:</strong> Press <kbd className="bg-sage/20 px-2 py-1 rounded text-xs">⌘K</kbd> (or tap{" "}
+            <span className="text-terracotta">✨</span> on mobile) for the command palette with fuzzy search.
+          </p>
         </div>
       ),
     }),
@@ -685,12 +788,15 @@ export function setExecuteCommand(fn: (command: string) => void) {
 
 export function executeCommand(input: string): CommandResult {
   const [commandName, ...args] = input.trim().split(" ")
+  const lowerCommandName = commandName.toLowerCase()
 
-  // Check aliases first
+  // Check aliases first (also case-insensitive)
   const aliases = getAliases()
-  const resolvedCommand = aliases[commandName] || commandName
+  const resolvedCommand = Object.keys(aliases).find((alias) => alias.toLowerCase() === lowerCommandName)
+    ? aliases[Object.keys(aliases).find((alias) => alias.toLowerCase() === lowerCommandName)!]
+    : lowerCommandName
 
-  const command = allCommands.find((cmd) => cmd.name === resolvedCommand)
+  const command = allCommands.find((cmd) => cmd.name.toLowerCase() === resolvedCommand.toLowerCase())
 
   if (!command) {
     return {

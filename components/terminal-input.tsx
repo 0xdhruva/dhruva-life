@@ -114,10 +114,13 @@ export function TerminalInput({
             onKeyDown={handleKeyDown}
             onFocus={() => setShowSuggestions(input.length > 0 && suggestions.length > 0)}
             onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
-            className="w-full bg-transparent border-none outline-none text-bone placeholder-sage/50 focus-ring content-width"
+            className="w-full bg-transparent border-none outline-none text-bone placeholder-sage/50 focus:ring-2 focus:ring-teal-stone focus:ring-offset-0 rounded-sm content-width"
             placeholder="Type a command..."
             autoComplete="off"
+            autoCorrect="off"
+            autoCapitalize="off"
             spellCheck={false}
+            inputMode="text"
           />
         </div>
       </div>

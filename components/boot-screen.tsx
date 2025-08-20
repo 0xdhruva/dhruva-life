@@ -35,13 +35,8 @@ export function BootScreen({ onComplete }: BootScreenProps) {
       setTimeout(() => {
         if (!skipped) {
           setStep(index + 1)
-          if (index === bootSequence.length - 1) {
-            setTimeout(() => {
-              if (!skipped) onComplete()
-            }, 400)
-          }
         }
-      }, index * 300),
+      }, index * 400),
     )
 
     return () => {
@@ -68,7 +63,7 @@ export function BootScreen({ onComplete }: BootScreenProps) {
         ))}
         {step > 0 && step <= bootSequence.length && <div className="terminal-cursor inline-block ml-1" />}
 
-        <div className="text-sage/60 text-sm mt-8">Press any key or click to skip</div>
+        <div className="text-sage/60 text-sm mt-8">Press any key or click to continue</div>
       </div>
     </div>
   )
