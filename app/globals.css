@@ -121,7 +121,7 @@
   }
 
   body {
-    @apply bg-bg text-fg;
+    @apply bg-background text-foreground;
     /* Typography improvements - 18px base desktop, 16px mobile, tighter letter spacing */
     font-size: 18px;
     letter-spacing: -0.01em;
