@@ -444,11 +444,24 @@ const basicCommands: Command[] = [
       content: (
         <div className="space-y-3">
           <p>
-            <span className="text-muted-foreground">Email:</span> hi@dhruva.life
+            <span className="text-muted-foreground">Email:</span>{" "}
+            <a href="mailto:hi@dhruva.life" className="text-accent hover:underline">
+              hi@dhruva.life
+            </a>
           </p>
           <p>
-            <span className="text-muted-foreground">Socials:</span> X/Twitter (@arenatwox), LinkedIn (/in/dhruva),
-            Instagram (@dhruva)
+            <span className="text-muted-foreground">Socials:</span>{" "}
+            <a href="https://x.com/arenatwox" className="text-accent hover:underline">
+              X/Twitter
+            </a>
+            ,{" "}
+            <a href="https://linkedin.com/in/dhruva" className="text-accent hover:underline">
+              LinkedIn
+            </a>
+            ,{" "}
+            <a href="https://instagram.com/dhruva" className="text-accent hover:underline">
+              Instagram
+            </a>
           </p>
           <p>
             <span className="text-muted-foreground">Book a chat:</span>{" "}
