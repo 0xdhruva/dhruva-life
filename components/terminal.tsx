@@ -39,8 +39,14 @@ export function Terminal({
   const terminalRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (terminalRef.current) {
-      terminalRef.current.scrollTop = terminalRef.current.scrollHeight
+    if (output.length > 0) {
+      // Small delay to ensure content is rendered before scrolling
+      setTimeout(() => {
+        window.scrollTo({
+          top: document.documentElement.scrollHeight,
+          behavior: "smooth",
+        })
+      }, 100)
     }
   }, [output])
 
