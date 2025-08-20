@@ -54,7 +54,7 @@ export function Terminal({
   }
 
   return (
-    <div className="flex flex-col h-screen bg-bg text-fg">
+    <div className="flex flex-col h-screen bg-background text-foreground">
       {/* Terminal Content */}
       <div
         ref={terminalRef}
@@ -78,7 +78,7 @@ export function Terminal({
       </div>
 
       {/* Desktop Input */}
-      <div className="hidden md:block border-t border-muted/30 bg-bg">
+      <div className="hidden md:block border-t border-muted/30 bg-background">
         <div style={{ maxWidth: "70ch", margin: "0 auto", width: "100%" }}>
           <TerminalInput
             input={input}

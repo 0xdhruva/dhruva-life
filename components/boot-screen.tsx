@@ -75,7 +75,7 @@ export function BootScreen({ onComplete, hasExecutedCommand }: BootScreenProps) 
   if (skipped) return null
 
   return (
-    <div className="bg-bg text-fg min-h-screen flex items-center justify-center font-mono">
+    <div className="bg-background text-foreground min-h-screen flex items-center justify-center font-mono">
       <div className="text-left space-y-4 max-w-[70ch] px-6">
         {bootSequence.slice(0, step).map((line, index) => (
           <div

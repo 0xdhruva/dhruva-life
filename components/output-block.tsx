@@ -23,7 +23,7 @@ export function OutputBlock({ id, timestamp, command, content, type = "command" 
   }, [content])
 
   const typeColors = {
-    command: "text-fg",
+    command: "text-foreground", // Fixed invalid text-fg class
     error: "text-red-400",
     success: "text-success",
   }
@@ -64,7 +64,7 @@ export function OutputBlock({ id, timestamp, command, content, type = "command" 
             <button
               onClick={handleCopyLink}
               onTouchStart={handleCopyLink}
-              className="ml-auto opacity-0 group-hover:opacity-100 text-muted hover:text-fg transition-all duration-200 text-xs px-2 py-1 hover:bg-muted/10 rounded"
+              className="ml-auto opacity-0 group-hover:opacity-100 text-muted-foreground hover:text-foreground transition-all duration-200 text-xs px-2 py-1 hover:bg-muted/10 rounded" // Fixed text-fg to text-foreground
               style={{ transform: "scale(1)", transition: "transform 80ms ease" }}
               onMouseDown={(e) => (e.currentTarget.style.transform = "scale(0.98)")}
               onMouseUp={(e) => (e.currentTarget.style.transform = "scale(1)")}
@@ -90,7 +90,7 @@ export function OutputBlock({ id, timestamp, command, content, type = "command" 
                 </div>
                 <button
                   onClick={() => setShowMore(true)}
-                  className="mt-3 px-3 py-1 text-sm border border-accent text-accent hover:bg-accent hover:text-bg transition-all duration-200 rounded-full"
+                  className="mt-3 px-3 py-1 text-sm border border-primary text-primary hover:bg-primary hover:text-primary-foreground transition-all duration-200 rounded-full" // Fixed border-accent to border-primary
                   style={{
                     height: "32px",
                     transform: "scale(1)",
@@ -109,7 +109,7 @@ export function OutputBlock({ id, timestamp, command, content, type = "command" 
                 {isLongContent && showMore && (
                   <button
                     onClick={() => setShowMore(false)}
-                    className="mt-3 px-3 py-1 text-sm border border-muted text-muted hover:bg-muted hover:text-bg transition-all duration-200 rounded-full"
+                    className="mt-3 px-3 py-1 text-sm border border-muted text-muted-foreground hover:bg-muted hover:text-background transition-all duration-200 rounded-full" // Fixed text-muted and hover:text-bg
                     style={{
                       height: "32px",
                       transform: "scale(1)",
