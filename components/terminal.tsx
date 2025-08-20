@@ -4,7 +4,6 @@ import type React from "react"
 import { useEffect, useRef } from "react"
 import { OutputBlock } from "./output-block"
 import { TerminalInput } from "./terminal-input"
-import { BootScreen } from "./boot-screen"
 
 interface TerminalProps {
   output: Array<{
@@ -22,9 +21,6 @@ interface TerminalProps {
   setHistoryIndex: (index: number) => void
   suggestions: string[]
   clearOutput: () => void
-  hasExecutedCommand: boolean
-  showBoot: boolean
-  onBootComplete: () => void
 }
 
 export function Terminal({
@@ -37,9 +33,6 @@ export function Terminal({
   setHistoryIndex,
   suggestions,
   clearOutput,
-  hasExecutedCommand,
-  showBoot,
-  onBootComplete,
 }: TerminalProps) {
   const terminalRef = useRef<HTMLDivElement>(null)
 
@@ -49,10 +42,6 @@ export function Terminal({
     }
   }, [output])
 
-  if (showBoot) {
-    return <BootScreen onComplete={onBootComplete} hasExecutedCommand={hasExecutedCommand} />
-  }
-
   return (
     <div className="flex flex-col h-screen bg-background text-foreground font-mono">
       {/* Terminal Content */}
@@ -61,8 +50,6 @@ export function Terminal({
         className="flex-1 overflow-y-auto px-6 md:px-8 lg:px-10 py-6 pb-20 md:pb-4"
         style={{ maxWidth: "70ch", margin: "0 auto", width: "100%" }}
       >
-        {hasExecutedCommand && <BootScreen onComplete={onBootComplete} hasExecutedCommand={hasExecutedCommand} />}
-
         <div className="space-y-6">
           {output.map((block, index) => (
             <div key={block.id}>

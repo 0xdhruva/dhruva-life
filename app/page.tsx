@@ -37,33 +37,31 @@ export default function HomePage() {
   }
 
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${theme === "dark" ? "dark" : ""}`}>
-      <div className="bg-peat text-bone min-h-screen font-mono">
-        <Terminal
-          output={output}
-          input={input}
-          setInput={setInput}
-          executeCommand={executeCommand}
-          history={history}
-          historyIndex={historyIndex}
-          setHistoryIndex={setHistoryIndex}
-          suggestions={suggestions}
-          clearOutput={clearOutput}
-        />
+    <div className="min-h-screen bg-background text-foreground font-mono">
+      <Terminal
+        output={output}
+        input={input}
+        setInput={setInput}
+        executeCommand={executeCommand}
+        history={history}
+        historyIndex={historyIndex}
+        setHistoryIndex={setHistoryIndex}
+        suggestions={suggestions}
+        clearOutput={clearOutput}
+      />
 
-        <MobileInputBar
-          input={input}
-          setInput={setInput}
-          executeCommand={executeCommand}
-          onOpenPalette={() => setShowCommandPalette(true)}
-        />
+      <MobileInputBar
+        input={input}
+        setInput={setInput}
+        executeCommand={executeCommand}
+        onOpenPalette={() => setShowCommandPalette(true)}
+      />
 
-        <CommandPalette
-          isOpen={showCommandPalette}
-          onClose={() => setShowCommandPalette(false)}
-          onExecuteCommand={executeCommand}
-        />
-      </div>
+      <CommandPalette
+        isOpen={showCommandPalette}
+        onClose={() => setShowCommandPalette(false)}
+        onExecuteCommand={executeCommand}
+      />
     </div>
   )
 }
